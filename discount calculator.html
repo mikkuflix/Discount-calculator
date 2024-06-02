@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Discount Calculator</title>
+    <link rel="stylesheet" href="styles.css">
+<style type="text/css" id="dcoder_stylesheet">body {
+    font-family: Arial, sans-serif;
+    background-color: #ffe6f2;
+    color: #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+h1 {
+    color: #ff66b2;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    padding: 8px;
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #ff66b2;
+    color: white;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #ff3385;
+}
+
+#result {
+    margin-top: 20px;
+    font-size: 1.2em;
+}</style></head>
+<body>
+    <div class="container">
+        <h1>Discount Calculator</h1>
+        <form id="discountForm">
+            <label for="originalPrice">Original Price (MYR):</label>
+            <input type="number" id="originalPrice" name="originalPrice" required>
+            
+            <label for="discountPercentage">Discount Percentage (%):</label>
+            <input type="number" id="discountPercentage" name="discountPercentage" required>
+            
+            <button type="submit">Calculate Discount</button>
+        </form>
+        <div id="result"></div>
+    </div>
+    <script src="script.js"></script>
+
+<script type="text/javascript" id="dcoder_script">document.getElementById('discountForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const originalPrice = parseFloat(document.getElementById('originalPrice').value);
+    const discountPercentage = parseFloat(document.getElementById('discountPercentage').value);
+    
+    if (isNaN(originalPrice) || isNaN(discountPercentage)) {
+        document.getElementById('result').textContent = 'Please enter valid numbers';
+        return;
+    }
+    
+    const discountAmount = (originalPrice * discountPercentage) / 100;
+    const finalPrice = originalPrice - discountAmount;
+    
+    document.getElementById('result').textContent = `Discounted Price: MYR ${finalPrice.toFixed(2)}`;
+});</script></body></html>
